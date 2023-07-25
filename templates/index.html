@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Generation</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+</head>
+<body>
+    <h1>Music Creation - Your music world begins here</h1>
+    <div class="container">
+        <button id="generateButton">Create</button>
+    </div>
+    <p id="generateNotice" style="display: none;">Generating Music...</p>
+    <p id="generatedNotice" style="display: none;">Your music is available</p>
+
+    <div class="container">
+        <midi-player id="musicPlayer" src="{{ url_for('static', filename='song2.mid') }}" sound-font visualizer="#myPianoRollVisualizer">
+        </midi-player>
+    </div>
+
+    <midi-visualizer type="piano-roll" id="myPianoRollVisualizer" src="{{ url_for('static', filename='song2.mid') }}">
+    </midi-visualizer>
+    <midi-visualizer type="staff" id="myStaffVisual"  src="{{ url_for('static', filename='song2.mid') }}">
+    </midi-visualizer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
